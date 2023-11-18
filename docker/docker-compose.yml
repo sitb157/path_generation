@@ -1,0 +1,22 @@
+version: '3'
+services:
+    path-generation:
+      image: sitb157/path-generation
+      container_name: path-generation 
+      privileged: true
+      environment:
+          #- "DISPLAY"
+          #- "QT_X11_NO_MITSHM=1"
+          - DISPLAY=${IP}:0.0
+      network_mode: host
+      build:
+          context: ./
+          args: 
+            - USER_NAME=${USER_NAME}
+      user: ${USER_NAME}
+      volumes:
+          - /tmp/.X11-unix:/tmp/.X11-unix:rw
+          - $HOME/.Xauthority:/root/.Xauthority:rw
+          - ../path_generation_ws:/root/path_generation_ws
+          - ../datas:/root/datas
+      command: sleep infinity
