@@ -10,9 +10,11 @@ USER root
 
 RUN apt-get update 
 RUN apt-get install -y \
-    vim \ 
-    git
+    vim 
 
 # Install rmf
 RUN apt-get update && apt-get install -y \
     python3-pip \
+
+# Install pykitti
+RUN pip3 install pykitti
