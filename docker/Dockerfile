@@ -9,12 +9,16 @@ RUN groupadd ${USER_NAME} --gid ${USER_ID}\
 USER root
 
 RUN apt-get update 
-RUN apt-get install -y \
-    vim 
 
 # Install rmf
 RUN apt-get update && apt-get install -y \
     python3-pip \
 
 # Install pykitti
-RUN pip3 install pykitti
+RUN pip3 install pykitti \
+    opencv-python
+
+# Install libgl for opencv-python
+RUN apt-get install -y \
+    libgl1-mesa-glx
+
