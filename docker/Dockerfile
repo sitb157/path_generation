@@ -16,9 +16,10 @@ RUN apt-get update && apt-get install -y \
 
 # Install pykitti
 RUN pip3 install pykitti \
-    opencv-python
+    opencv-python 
 
 # Install libgl for opencv-python
 RUN apt-get install -y \
-    libgl1-mesa-glx
+    libgl1-mesa-glx \
+    eog
 
